@@ -1,0 +1,1872 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "oa",
+    "description": "oa",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://aaa.bbb",
+      "variables": {
+        "protocol": {
+          "enum": [
+            "http"
+          ],
+          "default": "http"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/api/login/user": {
+      "post": {
+        "tags": [
+          "用户登录"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/userLogin"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/loginSuccess"
+          },
+          "401": {
+            "$ref": "#/components/responses/loginFail"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/borrowerList": {
+      "get": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "借款人列表(包含个人和公司)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/pageParam"
+          },
+          {
+            "$ref": "#/components/parameters/orderParam"
+          },
+          {
+            "$ref": "#/components/parameters/orderByParam"
+          },
+          {
+            "$ref": "#/components/parameters/queryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/borrowerList"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/getPersonDetail": {
+      "get": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "获取个人借款人详情",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/personBorrowerDetail"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/addPerson": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "添加个人借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/addBorrowerPerson"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/addRecord"
+          },
+          "201": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/modifyPerson": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "修改个人借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/modifyBorrowerPerson"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "201": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/deletePerson": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "删除个人借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/deleteIds"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/deleteOperation"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/getCompanyDetail": {
+      "get": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "获取公司借款人详情",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/companyBorrowerDetail"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/addCompany": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "新增公司借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/addBorrowerCompany"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/addRecord"
+          },
+          "201": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/modifyCompany": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "新增公司借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/modifyBorrowerCompany"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/deleteCompany": {
+      "post": {
+        "tags": [
+          "借款人"
+        ],
+        "description": "删除公司借款人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/deleteIds"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/deleteOperation"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/borrower/getManagerList": {
+      "get": {
+        "tags": [
+          "客户经理列表"
+        ],
+        "description": "客户经理列表",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/managerList"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/system/roleRelationshipList": {
+      "get": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "获取角色关系列表(暂未用)",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/systemConfigList"
+          }
+        }
+      }
+    },
+    "/pcjr/system/addRoleRelationship": {
+      "post": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "新增角色关系列表配置(暂未用)",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/systemListConfig"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          }
+        }
+      }
+    },
+    "/pcjr/system/modifyRoleRelationship": {
+      "post": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "修改角色关系列表配置(暂未用)",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/systemListConfig"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          }
+        }
+      }
+    },
+    "/pcjr/system/intimacyList": {
+      "get": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "获取亲密度列表(暂未用)",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/systemConfigList"
+          }
+        }
+      }
+    },
+    "/pcjr/system/addIntimacy": {
+      "post": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "新增亲密度配置(暂未用)",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/systemListConfig"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          }
+        }
+      }
+    },
+    "/pcjr/system/modifyIntimacy": {
+      "post": {
+        "tags": [
+          "系统配置(暂未使用)"
+        ],
+        "description": "修改亲密度配置(暂未用)",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/systemListConfig"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/contactList": {
+      "get": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "获取联系人列表(在借款人发起勾选联系人使用)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/customerIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/customerTypeParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/contactChooseList"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/addContact": {
+      "post": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "新增联系人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/addContact"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/modifyContact": {
+      "post": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "修改联系人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/modifyContact"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/contactDetail": {
+      "get": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "联系人详情",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/contactDetail"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/deleteContact": {
+      "post": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "删除联系人",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/deleteIds"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/deleteOperation"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/modifyRelationship": {
+      "post": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "新增/修改联系人关系",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/changeBorrowerContactRelationship"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/deleteOperation"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    },
+    "/pcjr/contact/getRelationshipList": {
+      "get": {
+        "tags": [
+          "联系人"
+        ],
+        "description": "新增/修改联系人关系",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idParam"
+          },
+          {
+            "$ref": "#/components/parameters/typerParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/relationshipList"
+          }
+        }
+      }
+    },
+    "/pcjr/contract/contractList": {
+      "get": {
+        "tags": [
+          "获取合同列表"
+        ],
+        "summary": "合同列表",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/pageParam"
+          },
+          {
+            "$ref": "#/components/parameters/orderParam"
+          },
+          {
+            "$ref": "#/components/parameters/orderByParam"
+          },
+          {
+            "$ref": "#/components/parameters/queryParam"
+          },
+          {
+            "$ref": "#/components/parameters/beginAmountParam"
+          },
+          {
+            "$ref": "#/components/parameters/endAmountParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/contractList"
+          },
+          "201": {
+            "$ref": "#/components/responses/operationResult"
+          },
+          "401": {
+            "$ref": "#/components/responses/unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "idParam": {
+        "in": "query",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "查询记录id"
+      },
+      "typerParam": {
+        "in": "query",
+        "name": "type",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "description": "id对应记录 * `0` - 个人借款人 * `1` - 公司借款人 * `2` - 联系人"
+      },
+      "pageParam": {
+        "in": "query",
+        "name": "page",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "description": "当前页数"
+      },
+      "orderParam": {
+        "in": "query",
+        "name": "order",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "需要排序的字段"
+      },
+      "orderByParam": {
+        "in": "query",
+        "name": "order_by",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "1表示升序，-1表示降序, 默认为升序"
+      },
+      "queryParam": {
+        "in": "query",
+        "name": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "需要匹配的内容"
+      },
+      "beginAmountParam": {
+        "in": "query",
+        "name": "begin_amount",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "开始金额"
+      },
+      "endAmountParam": {
+        "in": "query",
+        "name": "end_amount",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "double"
+        },
+        "description": "结束金额"
+      },
+      "customerIdParam": {
+        "in": "query",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "default": 0
+        },
+        "description": "借款人id"
+      },
+      "customerTypeParam": {
+        "in": "query",
+        "name": "type",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "description": "借款人id类型 * `0` - 个人客户 * `1` - 公司客户\n"
+      }
+    },
+    "requestBodies": {
+      "userLogin": {
+        "description": "用户登录",
+        "content": {
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "properties": {
+                "mobile": {
+                  "type": "string",
+                  "description": "手机号"
+                },
+                "password": {
+                  "type": "string",
+                  "format": "password",
+                  "description": "密码"
+                }
+              },
+              "example": {
+                "mobile": "123",
+                "password": "456"
+              }
+            }
+          }
+        }
+      },
+      "addBorrowerPerson": {
+        "description": "添加个人借款人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/personBorrowerDetail"
+            }
+          }
+        }
+      },
+      "modifyBorrowerPerson": {
+        "description": "修改个人借款人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/personBorrowerModify"
+            }
+          }
+        }
+      },
+      "addBorrowerCompany": {
+        "description": "添加公司借款人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/companyBorrowerDetail"
+            }
+          }
+        }
+      },
+      "modifyBorrowerCompany": {
+        "description": "修改公司借款人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/companyBorrowerModify"
+            }
+          }
+        }
+      },
+      "deleteIds": {
+        "description": "删除传入ids",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "ids": {
+                  "type": "string",
+                  "description": "可传入多个id，用逗号分隔",
+                  "example": "1,2,3"
+                }
+              }
+            }
+          }
+        }
+      },
+      "systemListConfig": {
+        "description": "系统列表配置",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "string",
+                  "description": "配置内容",
+                  "example": "配置1,配置2,配置3"
+                }
+              }
+            }
+          }
+        }
+      },
+      "addContact": {
+        "description": "新增联系人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/contactDetail"
+            }
+          }
+        }
+      },
+      "modifyContact": {
+        "description": "修改联系人",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "联系人记录id"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "$ref": "#/components/schemas/contactDetail"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "changeBorrowerContactRelationship": {
+        "description": "新增/修改联系人与借款人关系",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "对应为联系人/个人借款人/公司借款人记录id"
+                },
+                "type": {
+                  "type": "integer",
+                  "enum": [
+                    0,
+                    1,
+                    2
+                  ],
+                  "description": "id对应记录 * `0` - 个人借款人 * `1` - 公司借款人 * `2` - 联系人\n"
+                },
+                "relationship": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/relationshipBase"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "loginFail": {
+        "description": "状态值仍然为200，登录失败返回",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/defaultResponse"
+            }
+          }
+        }
+      },
+      "unauthorized": {
+        "description": "状态值仍然为200，未登录/登录超时返回",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/notLoginOrDeleteOperation"
+            }
+          }
+        }
+      },
+      "deleteOperation": {
+        "description": "删除操作结果",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/notLoginOrDeleteOperation"
+            }
+          }
+        }
+      },
+      "loginSuccess": {
+        "description": "return access tokens when login success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/accessToken"
+            }
+          }
+        },
+        "headers": {
+          "Set-Cookie": {
+            "schema": {
+              "type": "string",
+              "example": "JSESSIONID=abcde12345; Path=/; HttpOnly"
+            }
+          }
+        }
+      },
+      "addRecord": {
+        "description": "添加成功，返回id; ",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/addSuccess"
+            }
+          }
+        }
+      },
+      "operationResult": {
+        "description": "操作结果",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/defaultResponseWithoutData"
+            }
+          }
+        }
+      },
+      "borrowerList": {
+        "description": "借款人列表，包含个人和公司",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/borrowertList"
+            }
+          }
+        }
+      },
+      "personBorrowerDetail": {
+        "description": "返回某个个人借款人详情",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/personBorrowerWithRelationship"
+            }
+          }
+        }
+      },
+      "companyBorrowerDetail": {
+        "description": "返回某个公司借款人详情",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/companyBorrowerWithRelationship"
+            }
+          }
+        }
+      },
+      "managerList": {
+        "description": "客户经理列表",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/managerList"
+            }
+          }
+        }
+      },
+      "contractList": {
+        "description": "返回合同列表",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/contractList"
+            }
+          }
+        }
+      },
+      "systemConfigList": {
+        "description": "返回系统配置列表",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/defaultResponseWithoutData"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "item": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "contactChooseList": {
+        "description": "联系人选择列表",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/contactChooseList"
+            }
+          }
+        }
+      },
+      "contactDetail": {
+        "description": "联系人详情",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/contactDetailWithRelationship"
+            }
+          }
+        }
+      },
+      "relationshipList": {
+        "description": "关联关系详情",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/relationshipList"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "baseListSchema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "pager": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/pager"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "contractList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/baseListSchema"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/contract"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "borrowertList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/baseListSchema"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/borrower"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "pager": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "description": "当前页数"
+          },
+          "size": {
+            "type": "integer",
+            "description": "每页数量"
+          },
+          "total": {
+            "type": "integer",
+            "description": "列表总数"
+          },
+          "max_page": {
+            "type": "integer",
+            "description": "最大页数"
+          }
+        }
+      },
+      "accessToken": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "accessToken": {
+                "type": "string",
+                "description": "access_token值"
+              },
+              "expireDate": {
+                "type": "integer",
+                "description": "token过期时间"
+              },
+              "msg": {
+                "type": "string",
+                "description": "消息"
+              },
+              "refreshToken": {
+                "type": "string",
+                "description": "refresh_token值"
+              },
+              "scope": {
+                "type": "string",
+                "enum": [
+                  "PC",
+                  "WAP",
+                  "APP"
+                ],
+                "description": "来源"
+              },
+              "success": {
+                "type": "boolean",
+                "description": "是否成功"
+              },
+              "uid": {
+                "type": "integer",
+                "description": "用户id"
+              }
+            }
+          }
+        }
+      },
+      "addSuccess": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "返回新添加的记录id"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "defaultResponseWithoutData": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "msg": {
+            "type": "string"
+          }
+        }
+      },
+      "defaultResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "success": {
+                "type": "boolean"
+              },
+              "msg": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "notLoginOrDeleteOperation": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "default": false
+          },
+          "msg": {
+            "type": "string",
+            "default": "登录超时"
+          },
+          "code": {
+            "type": "integer",
+            "default": 100101
+          }
+        }
+      },
+      "contract": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "合同id"
+          },
+          "contract_no": {
+            "type": "string",
+            "description": "合同编号"
+          },
+          "borrower_id": {
+            "type": "string",
+            "description": "借款人id"
+          },
+          "borrower_name": {
+            "type": "string",
+            "description": "借款人姓名"
+          },
+          "borrower_type": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ],
+            "description": "借款人类型"
+          },
+          "borrow_amount": {
+            "type": "number",
+            "format": "double",
+            "description": "借款金额"
+          },
+          "year_income": {
+            "type": "number",
+            "format": "double",
+            "description": "年化收益"
+          },
+          "product_days": {
+            "type": "integer",
+            "description": "借款时间"
+          },
+          "update_at": {
+            "type": "integer",
+            "description": "更新时间"
+          },
+          "join_date": {
+            "type": "integer",
+            "description": "添加时间"
+          }
+        }
+      },
+      "borrower": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "借款人id"
+          },
+          "name": {
+            "type": "string",
+            "description": "借款人姓名"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "手机号"
+          },
+          "manager_name": {
+            "type": "string",
+            "description": "客户经理姓名"
+          },
+          "customer_type": {
+            "type": "string",
+            "enum": [
+              0,
+              1
+            ],
+            "description": "客户类型,0:个人客户;1:公司客户"
+          },
+          "credit_rating": {
+            "type": "string",
+            "description": "借款人信用"
+          },
+          "join_date": {
+            "type": "string",
+            "description": "记录添加时间"
+          }
+        }
+      },
+      "personBorrowerDetail": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "姓名"
+          },
+          "identity": {
+            "type": "string",
+            "description": "身份证"
+          },
+          "sex": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ],
+            "default": 0,
+            "description": "0为男，1为女，默认男"
+          },
+          "marriage": {
+            "type": "integer",
+            "enum": [
+              0,
+              1,
+              2
+            ],
+            "default": 0,
+            "description": "0为未婚，1为已婚，2离异 默认未婚"
+          },
+          "manager": {
+            "type": "integer",
+            "description": "客户经理id"
+          },
+          "manager_name": {
+            "type": "string",
+            "description": "客户经理姓名"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "手机号"
+          },
+          "fax": {
+            "type": "string",
+            "description": "传真"
+          },
+          "phone": {
+            "type": "string",
+            "description": "电话"
+          },
+          "address": {
+            "type": "string",
+            "description": "居住地址"
+          },
+          "map_x": {
+            "type": "string",
+            "description": "地图x轴"
+          },
+          "map_y": {
+            "type": "string",
+            "description": "地图y轴"
+          },
+          "postal_code": {
+            "type": "string",
+            "description": "邮政编码"
+          },
+          "card_no": {
+            "type": "string",
+            "description": "贷款卡号"
+          },
+          "company": {
+            "type": "string",
+            "description": "工作单位"
+          },
+          "position": {
+            "type": "string",
+            "description": "单位职位"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "email地址"
+          },
+          "website": {
+            "type": "string",
+            "format": "web",
+            "description": "网站"
+          },
+          "credit_rating": {
+            "type": "string",
+            "description": "信用等级"
+          },
+          "counter_guarantee": {
+            "type": "string",
+            "description": "反担保情况"
+          },
+          "borrower_introduction": {
+            "type": "string",
+            "description": "借款人情况"
+          },
+          "credit_history": {
+            "type": "string",
+            "description": "信用记录"
+          },
+          "remarks": {
+            "type": "string",
+            "description": "备注"
+          }
+        },
+        "required": [
+          "name",
+          "mobile",
+          "identity"
+        ]
+      },
+      "personBorrowerModify": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "记录id"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/personBorrowerDetail"
+          }
+        ]
+      },
+      "personBorrowerWithRelationship": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/personBorrowerModify"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "isDel": {
+                        "type": "integer",
+                        "description": "是否删除",
+                        "enum": [
+                          0,
+                          1
+                        ]
+                      },
+                      "join_date": {
+                        "type": "integer",
+                        "description": "添加记录时间"
+                      },
+                      "relationship": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/relationship"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "companyBorrowerDetail": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "借款公司名称"
+          },
+          "contract_name": {
+            "type": "string",
+            "description": "合同名称"
+          },
+          "business": {
+            "type": "string",
+            "description": "主营业务"
+          },
+          "social_credit_code": {
+            "type": "string",
+            "description": "社会信用代码"
+          },
+          "organization_code": {
+            "type": "string",
+            "description": "组织机构代码"
+          },
+          "business_no": {
+            "type": "string",
+            "description": "营业执照号码"
+          },
+          "leader": {
+            "type": "string",
+            "description": "企业负责人"
+          },
+          "actual_leader": {
+            "type": "string",
+            "description": "实际经营者"
+          },
+          "regtime": {
+            "type": "integer",
+            "description": "注册时间"
+          },
+          "manager": {
+            "type": "string",
+            "description": "客户经理id"
+          },
+          "manager_name": {
+            "type": "string",
+            "description": "客户经理名字"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "手机号码"
+          },
+          "fax": {
+            "type": "string",
+            "description": "传真"
+          },
+          "phone": {
+            "type": "string",
+            "description": "电话"
+          },
+          "address": {
+            "type": "string",
+            "description": "居住地址"
+          },
+          "map_x": {
+            "type": "string",
+            "description": "地图x轴"
+          },
+          "map_y": {
+            "type": "string",
+            "description": "地图y轴"
+          },
+          "postal_code": {
+            "type": "string",
+            "description": "邮政编码"
+          },
+          "card_no": {
+            "type": "string",
+            "description": "贷款卡号"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          },
+          "website": {
+            "type": "string",
+            "description": "网站"
+          },
+          "nature": {
+            "type": "integer",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "公司性质 * `0` - 金融服务机构 * `1` - 商圈管理者 * `2` - 政府机关/团体 * `3` - 实体企业 * `4` - 其他\n"
+          },
+          "credit_rating": {
+            "type": "string",
+            "description": "信用等级"
+          },
+          "counter_guarantee": {
+            "type": "string",
+            "description": "反担保情况"
+          },
+          "borrower_introduction": {
+            "type": "string",
+            "description": "借款人情况"
+          },
+          "credit_history": {
+            "type": "string",
+            "description": "信用记录"
+          },
+          "remarks": {
+            "type": "string",
+            "description": "备注"
+          }
+        }
+      },
+      "companyBorrowerModify": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "记录id"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/companyBorrowerDetail"
+          }
+        ]
+      },
+      "companyBorrowerWithRelationship": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/companyBorrowerModify"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "isDel": {
+                        "type": "integer",
+                        "description": "是否删除",
+                        "enum": [
+                          0,
+                          1
+                        ]
+                      },
+                      "join_date": {
+                        "type": "integer",
+                        "description": "添加记录时间"
+                      },
+                      "relationship": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/relationship"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "relationship": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/relationshipBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "join_date": {
+                "type": "string",
+                "description": "关联关系创建时间"
+              }
+            }
+          }
+        ]
+      },
+      "relationshipBase": {
+        "properties": {
+          "customer_id": {
+            "type": "integer",
+            "description": "借款人id"
+          },
+          "customer_name": {
+            "type": "string",
+            "description": "借款人姓名"
+          },
+          "contact_id": {
+            "type": "integer",
+            "description": "联系人id"
+          },
+          "contact_name": {
+            "type": "string",
+            "description": "联系人姓名"
+          },
+          "id": {
+            "type": "string",
+            "description": "关联关系记录id"
+          },
+          "customer_type": {
+            "type": "integer",
+            "description": "借款人类型 0表示个人 1表示公司",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "role_relationship": {
+            "type": "string",
+            "description": "角色关系"
+          },
+          "intimacy": {
+            "type": "string",
+            "description": "亲密度"
+          }
+        }
+      },
+      "managerList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "客户经理id"
+                    },
+                    "Realname": {
+                      "type": "string",
+                      "description": "客户经理真实姓名"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "contactChooseList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/baseListSchema"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "联系人id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "联系人姓名"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "联系人手机号"
+                    },
+                    "is_selected": {
+                      "type": "boolean",
+                      "description": "是否勾选"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "contactDetail": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "联系人名称"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "手机号码"
+          },
+          "address": {
+            "type": "string",
+            "description": "居住地址"
+          },
+          "company": {
+            "type": "string",
+            "description": "工作单位"
+          },
+          "position": {
+            "type": "string",
+            "description": "单位职位"
+          },
+          "sex": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ],
+            "description": "性别 * `0` 男 * `1` 女\n",
+            "default": 0
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "邮箱"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注"
+          }
+        },
+        "required": [
+          "name",
+          "mobile"
+        ]
+      },
+      "modifyContactDetail": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "联系人记录id"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/contactDetail"
+          }
+        ]
+      },
+      "contactDetailWithRelationship": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/modifyContactDetail"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "isDel": {
+                        "type": "integer",
+                        "description": "是否删除",
+                        "enum": [
+                          0,
+                          1
+                        ]
+                      },
+                      "join_date": {
+                        "type": "integer",
+                        "description": "添加记录时间"
+                      },
+                      "relationship": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/relationship"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "relationshipList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/defaultResponseWithoutData"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/relationship"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "contact_mobile": {
+                          "type": "string",
+                          "description": "联系人手机号"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "TSESSION"
+      }
+    }
+  }
+}
